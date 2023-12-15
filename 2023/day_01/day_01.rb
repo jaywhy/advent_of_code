@@ -27,7 +27,7 @@ WORD_TO_NUMBER = {
   "nine" => "9"
 }.freeze
 
-input = File.read("day_01/input.txt")
+input = File.read("2023/day_01/input.txt")
 
 def part_1(input)
   input.each_line.map do |line|
