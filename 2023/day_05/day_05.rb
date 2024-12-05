@@ -8,22 +8,19 @@ def part_1(input)
       ranges << line.split(" ").map(&:to_i)
     end
 
-    new = []
-    seeds.each do |seed|
+    seeds = seeds.each_with_object([]) do |seed, accum|
       range = ranges.find { |_, from, length| (from..from + length).include?(seed) }
 
-      new << if range
-               (range[0] - range[1]) + seed
-             else
-               seed
-             end
+      accum << if range
+                 (range[0] - range[1]) + seed
+               else
+                 seed
+               end
 
     end
-
-    seeds = new
   end
 
-  pp seeds.min
+  seeds.min
 end
 
 def part_2(input)
@@ -62,7 +59,7 @@ def part_2(input)
     seeds = new
   end
 
-  pp seeds.map(&:begin).min
+  seeds.map(&:begin).min
 end
 
 input_test = <<~DATA
@@ -102,5 +99,6 @@ input_test = <<~DATA
 DATA
 
 input = File.read("2023/day_05/input.txt")
-part_2(input)
+p part_1(input_test)
+p part_2(input_test)
 # pp part_2(input_test)
